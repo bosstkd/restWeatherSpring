@@ -2,6 +2,7 @@ package com.react.meteo.entities;
 
 import java.util.List;
 
+
 public class RestRepresentalClass {
 
 	

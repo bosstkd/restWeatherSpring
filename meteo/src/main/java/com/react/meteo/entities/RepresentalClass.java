@@ -2,41 +2,48 @@ package com.react.meteo.entities;
 
 public class RepresentalClass {
 
-	private double temperature;
-	private double vitesseAir;
-	private int cielClaire;
-	private double pression;
-	private int humidite;
+	private String id;
+	private String temperature;
+	private String vitesseAir;
+	private String cielClaire;
+	private String pression;
+	private String humidite;
 	private String date;
 	
-	public double getTemperature() {
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	public String getTemperature() {
 		return temperature;
 	}
-	public void setTemperature(double temperature) {
+	public void setTemperature(String temperature) {
 		this.temperature = temperature;
 	}
-	public double getVitesseAir() {
+	public String getVitesseAir() {
 		return vitesseAir;
 	}
-	public void setVitesseAir(double vitesseAir) {
+	public void setVitesseAir(String vitesseAir) {
 		this.vitesseAir = vitesseAir;
 	}
-	public int getCielClaire() {
+	public String getCielClaire() {
 		return cielClaire;
 	}
-	public void setCielClaire(int cielClaire) {
+	public void setCielClaire(String cielClaire) {
 		this.cielClaire = cielClaire;
 	}
-	public double getPression() {
+	public String getPression() {
 		return pression;
 	}
-	public void setPression(double pression) {
+	public void setPression(String pression) {
 		this.pression = pression;
 	}
-	public int getHumidite() {
+	public String getHumidite() {
 		return humidite;
 	}
-	public void setHumidite(int humidite) {
+	public void setHumidite(String humidite) {
 		this.humidite = humidite;
 	}
 	public String getDate() {
@@ -45,6 +52,8 @@ public class RepresentalClass {
 	public void setDate(String date) {
 		this.date = date;
 	}
+	
+
 	
 	
 	

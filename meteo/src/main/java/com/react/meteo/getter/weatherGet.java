@@ -24,11 +24,32 @@ import javax.xml.transform.stream.StreamResult;
 import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
 
+import com.react.meteo.fct.dt;
+
 
 
 public class weatherGet {
 	 
 		  
+	public List<weatherBean> weatherOfUntil(String zoneName, Date until) throws MalformedURLException, SAXException, IOException, ParserConfigurationException, TransformerException{
+		List<weatherBean> wob = new ArrayList<weatherBean>();
+		
+		List<weatherBean> lwt = weatherOf(zoneName);
+		
+		dt dtsOp = new dt();
+		
+		until = dtsOp.longToDate(dtsOp.addDay(until, 1));
+		
+		for(weatherBean wb: lwt) {
+			if(wb.getFrom().before(until)) {
+				wob.add(wb);
+			}
+		}
+		
+		return wob;
+	}
+	
+	
 	public List<weatherBean> weatherOf(String zoneName) throws SAXException, MalformedURLException, IOException, ParserConfigurationException, TransformerException{
 		    String url = "http://api.openweathermap.org/data/2.5/forecast?q="+zoneName.toLowerCase().replaceAll("-", " ")+"&units=imperial&type=accurate&mode=xml&APPID=ffdd58e2c0b917abe7137c942a1c1d67";
 		  //  http://api.openweathermap.org/data/2.5/forecast?q=annaba&units=imperial&type=accurate&mode=xml&APPID=ffdd58e2c0b917abe7137c942a1c1d67
