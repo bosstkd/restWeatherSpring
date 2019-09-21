@@ -5,7 +5,10 @@ import java.util.Locale;
 import java.util.Vector;
 
 import com.ibm.icu.text.RuleBasedNumberFormat;
+import javax.jws.WebService;
 
+
+@WebService
 public class nbr {
 	
 	

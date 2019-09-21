@@ -12,7 +12,6 @@ public class MeteoApplication {
         ApplicationContext ctx = SpringApplication.run(MeteoApplication.class, args);
 		
 		
-		
 	}
 
 }

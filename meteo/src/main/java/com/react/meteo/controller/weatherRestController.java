@@ -23,13 +23,13 @@ import com.react.meteo.fct.dt;
 import com.react.meteo.getter.weatherBean;
 import com.react.meteo.getter.weatherGet;
 
-
+@CrossOrigin
 @RestController
 public class weatherRestController {
 
 	
 	
-	@CrossOrigin
+	
 	@GetMapping("/weather/{ville}")
 	public List<RepresentalClass> getByZoneA(@PathVariable String ville) {
 		
@@ -78,7 +78,7 @@ public class weatherRestController {
 	}
 	
 	
-	@CrossOrigin
+	
 	@GetMapping("/weather/{ville}/{dts}")
 	public List<RepresentalClass> getByZoneAndDateA(@PathVariable String ville,@PathVariable String dts) {
 		
@@ -127,7 +127,7 @@ public class weatherRestController {
 	
 	
 	
-	@CrossOrigin
+	
 	@GetMapping("/weather/code/{ville}")
 	public RestRepresentalClass getByZoneB(@PathVariable String ville) {
 		weatherGet weather = new weatherGet();
@@ -177,7 +177,7 @@ public class weatherRestController {
 	}
 	
 	
-	@CrossOrigin
+	
 	@GetMapping("/weather/code/{ville}/{dts}")
 	public RestRepresentalClass getByZoneAndDateB(@PathVariable String ville, @PathVariable String dts) {
 		weatherGet weather = new weatherGet();
@@ -228,7 +228,7 @@ public class weatherRestController {
 	
 	
 	
-	@CrossOrigin
+	
 	@GetMapping("/weather/code/{ville}/today")
 	public RestRepresentalClass getByZoneAndDateC(@PathVariable String ville) {		
 		Date dts = new Date();
