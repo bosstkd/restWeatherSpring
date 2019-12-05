@@ -15,8 +15,13 @@ public class weatherController {
 	
 	@RequestMapping(value="/")
 	public String initial() {
-		
 		return "test";
 	}
+        
 
+        @RequestMapping(value="/login")
+	public String login() {
+		return "test";
+	}
+        
 }

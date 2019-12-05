@@ -12,6 +12,8 @@ import org.apache.commons.codec.binary.Base64;
 public class Codification {
 	
 	
+    
+    
 	
 	
 	private  byte[] linebreak = {}; // Remove Base64 encoder default linebreak

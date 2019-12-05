@@ -6,18 +6,20 @@
 package com.react.meteo.entities.tables;
 
 import java.io.Serializable;
+import java.util.Collection;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -28,84 +30,80 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Users.findAll", query = "SELECT u FROM Users u")
-    , @NamedQuery(name = "Users.findById", query = "SELECT u FROM Users u WHERE u.id = :id")
-    , @NamedQuery(name = "Users.findByUserId", query = "SELECT u FROM Users u WHERE u.userId = :userId")
-    , @NamedQuery(name = "Users.findByTitle", query = "SELECT u FROM Users u WHERE u.title = :title")
-    , @NamedQuery(name = "Users.findByBody", query = "SELECT u FROM Users u WHERE u.body = :body")})
+    , @NamedQuery(name = "Users.findByUserName", query = "SELECT u FROM Users u WHERE u.userName = :userName")
+    , @NamedQuery(name = "Users.findByActive", query = "SELECT u FROM Users u WHERE u.active = :active")
+    , @NamedQuery(name = "Users.findByPassword", query = "SELECT u FROM Users u WHERE u.password = :password")})
 public class Users implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @Column(name = "id", nullable = false)
-    private Integer id;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 200)
-    @Column(name = "userId", nullable = false, length = 200)
-    private String userId;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 255)
-    @Column(name = "title", nullable = false, length = 255)
-    private String title;
+    @Column(name = "user_name", nullable = false, length = 255)
+    private String userName;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "active", nullable = false)
+    private boolean active;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 255)
-    @Column(name = "body", nullable = false, length = 255)
-    private String body;
+    @Column(name = "password", nullable = false, length = 255)
+    private String password;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "userName")
+    private Collection<Userrole> userroleCollection;
 
     public Users() {
     }
 
-    public Users(Integer id) {
-        this.id = id;
+    public Users(String userName) {
+        this.userName = userName;
     }
 
-    public Users(Integer id, String userId, String title, String body) {
-        this.id = id;
-        this.userId = userId;
-        this.title = title;
-        this.body = body;
+    public Users(String userName, boolean active, String password) {
+        this.userName = userName;
+        this.active = active;
+        this.password = password;
     }
 
-    public Integer getId() {
-        return id;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
-    public String getUserId() {
-        return userId;
+    public boolean getActive() {
+        return active;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public void setActive(boolean active) {
+        this.active = active;
     }
 
-    public String getTitle() {
-        return title;
+    public String getPassword() {
+        return password;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public String getBody() {
-        return body;
+    @XmlTransient
+    public Collection<Userrole> getUserroleCollection() {
+        return userroleCollection;
     }
 
-    public void setBody(String body) {
-        this.body = body;
+    public void setUserroleCollection(Collection<Userrole> userroleCollection) {
+        this.userroleCollection = userroleCollection;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        hash += (userName != null ? userName.hashCode() : 0);
         return hash;
     }
 
@@ -116,7 +114,7 @@ public class Users implements Serializable {
             return false;
         }
         Users other = (Users) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if ((this.userName == null && other.userName != null) || (this.userName != null && !this.userName.equals(other.userName))) {
             return false;
         }
         return true;
@@ -124,7 +122,7 @@ public class Users implements Serializable {
 
     @Override
     public String toString() {
-        return "com.react.meteo.entities.tables.Users[ id=" + id + " ]";
+        return "com.react.meteo.entities.tables.Users[ userName=" + userName + " ]";
     }
     
 }

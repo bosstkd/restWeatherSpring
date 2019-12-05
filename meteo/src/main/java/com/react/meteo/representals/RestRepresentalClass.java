@@ -1,4 +1,4 @@
-package com.react.meteo.entities;
+package com.react.meteo.representals;
 
 import java.util.List;
 

@@ -5,13 +5,14 @@
  */
 package com.react.meteo.repository;
 
-import com.react.meteo.entities.tables.Users;
+import com.react.meteo.entities.tables.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
+
 
 /**
  *
  * @author Amine
  */
-public interface usersRepository extends JpaRepository<Users, String>{
-    Users findByUserName(String userName);
+public interface roleRepository extends JpaRepository<Role, String>{
+    
 }

@@ -1,4 +1,4 @@
-package com.react.meteo.controller;
+package com.react.meteo.controller.rest;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -16,15 +16,18 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import org.xml.sax.SAXException;
 
-import com.react.meteo.entities.RepresentalClass;
-import com.react.meteo.entities.RestRepresentalClass;
+import com.react.meteo.representals.RepresentalClass;
+import com.react.meteo.representals.RestRepresentalClass;
 import com.react.meteo.fct.Codification;
 import com.react.meteo.fct.dt;
 import com.react.meteo.getter.weatherBean;
 import com.react.meteo.getter.weatherGet;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @CrossOrigin
 @RestController
+@Validated
 public class weatherRestController {
 
 	
@@ -235,6 +238,8 @@ public class weatherRestController {
        return getByZoneAndDateB(ville, new SimpleDateFormat("ddMMyyyy").format(dts));
 	}
 	
-	
+        
+ 
+      
 	
 }
